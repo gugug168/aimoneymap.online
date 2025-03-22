@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新手小白赚钱导航 - 从零开始创业指南和AI工具资源大全</title>
+    <meta name="description" content="专为互联网创业新手提供的赚钱工具导航，集合AI工具、创业资源、建站指南、市场分析工具等全方位资源，助您快速起步在线创业之旅。">
+    <meta name="keywords" content="赚钱导航,创业指南,AI工具,网站建设,在线创业,小白创业,网络赚钱,副业,被动收入">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 基础样式设置 */
+        :root {
+            --primary-color: #007AFF;
+            --secondary-color: #5AC8FA;
+            --success-color: #34C759;
+            --warning-color: #FF9500;
+            --danger-color: #FF3B30;
+            --light-color: #F2F2F7;
+            --dark-color: #1C1C1E;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* 暗黑模式 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light-color: #1C1C1E;
+                --dark-color: #F2F2F7;
+                --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            }
+            body {
+                background-color: #000;
+                color: #F2F2F7;
+            }
+            .category-card {
+                background-color: #2C2C2E;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            }
+            .resource-card {
+                background-color: #1C1C1E;
+            }
+            .nav-bar {
+                background-color: rgba(28, 28, 30, 0.8);
+            }
+            .language-selector {
+                background-color: #2C2C2E;
+                color: #F2F2F7;
+            }
+            .search-bar input {
+                background-color: #2C2C2E;
+                color: #F2F2F7;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #F2F2F7;
+            color: #1C1C1E;
+            padding-top: 80px;
+            transition: var(--transition);
+        }
+        
+        /* 动画效果 */
+        .category-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .floating-btn {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* 导航栏样式 */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 26px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-bar input {
+            padding: 10px 15px 10px 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: var(--light-color);
+            width: 200px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .search-bar input:focus {
+            width: 280px;
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8E8E93;
+        }
+
+        .language-selector {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: var(--light-color);
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background-color: #E5E5EA;
+        }
+
+        /* 分类和资源卡片样式 */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 40px 0 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+        }
+
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+
+        .category-header h2 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .category-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 22px;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .resources-list {
+            padding: 15px;
+        }
+
+        .resource-card {
+            background-color: #F7F7F9;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .resource-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .resource-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .resource-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .resource-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .resource-tags {
+            display: flex;
+            gap: 5px;
+        }
+
+        .tag {
+            background-color: #E5E5EA;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #636366;
+        }
+
+        .resource-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+        }
+
+        .resource-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* 添加卡片链接覆盖层 */
+        .resource-card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-column p, .footer-column a {
+            font-size: 14px;
+            line-height: 1.6;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* 响应式样式 */
+        @media (max-width: 768px) {
+            .category-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .search-bar input {
+                width: 150px;
+            }
+
+            .search-bar input:focus {
+                width: 200px;
+            }
+
+            .nav-right {
+                gap: 10px;
+            }
+        }
+
+        /* 特殊效果 */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.4);
+        }
+
+        /* 自定义样式 */
+        .gradient-1 { background: linear-gradient(135deg, #FF2D55, #FF9500); }
+        .gradient-2 { background: linear-gradient(135deg, #5856D6, #AF52DE); }
+        .gradient-3 { background: linear-gradient(135deg, #34C759, #5AC8FA); }
+        .gradient-4 { background: linear-gradient(135deg, #FFCC00, #FF9500); }
+        .gradient-5 { background: linear-gradient(135deg, #FF3B30, #FF2D55); }
+        .gradient-6 { background: linear-gradient(135deg, #007AFF, #5AC8FA); }
+
+        /* 搜索结果样式 */
+        .search-results-info {
+            position: fixed;
+            top: 75px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding: 10px 0;
+            z-index: 900;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .search-results-info.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .search-highlight {
+            background-color: rgba(255, 204, 0, 0.3);
+            padding: 0 2px;
+            border-radius: 3px;
+        }
+        
+        .no-results-message {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 18px;
+            color: #6e6e73;
+        }
+        
+        .clear-search {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8E8E93;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .clear-search.visible {
+            opacity: 1;
+        }
+
+        /* 分类介绍样式 */
+        .category-intro {
+            padding: 15px 20px;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            margin: 10px 0;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 1000px;
+            overflow: hidden;
+            opacity: 1;
+        }
+        
+        .category-intro.collapsed {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin: 0;
+            opacity: 0;
+        }
+        
+        .category-intro p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .intro-toggle {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            display: inline-block;
+            margin: 5px 0 15px;
+        }
+        
+        .intro-toggle:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        /* Dark mode adjustments */
+        .dark-mode .category-intro {
+            background-color: var(--bg-dark-secondary);
+        }
+        
+        .dark-mode .intro-toggle {
+            border-color: var(--accent-color-dark);
+            color: var(--accent-color-dark);
+        }
+        
+        .dark-mode .intro-toggle:hover {
+            background: var(--accent-color-dark);
+            color: var(--text-color-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span id="site-title">新手小白赚钱导航</span>
+            </div>
+            <div class="nav-right">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="搜索工具或网站...">
+                    <i class="fas fa-times clear-search" id="clear-search"></i>
+                </div>
+                <select class="language-selector" id="language-selector">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- 搜索结果信息条 -->
+    <div class="search-results-info" id="search-results-info">
+        找到 <span id="results-count">0</span> 个结果：<span id="search-keyword"></span>
+    </div>
+
+    <div class="container">
+        <!-- 网站介绍 -->
+        <div class="section-title">
+            <i class="fas fa-compass"></i>
+            <span id="welcome-text">从零开始的财富之旅</span>
+        </div>
+        
+        <!-- AI工具与变现 -->
+        <div class="section-title">
+            <i class="fas fa-robot"></i>
+            <span id="ai-tools-title">AI工具与变现</span>
+            <meta itemprop="name" content="AI工具与变现">
+            <meta itemprop="description" content="专为创业者和自由职业者精选的顶级AI工具，包括聊天助手、图像生成和视频制作，助您提高效率并探索新的商业机会">
+        </div>
+        <div class="category-container">
+            <!-- AI聊天助手 -->
+            <div class="category-card">
+                <div class="category-header gradient-1">
+                    <h2><i class="fas fa-comments"></i> <span id="ai-chat-title">AI聊天助手</span></h2>
+                    <p id="ai-chat-desc">强大的AI对话工具，帮你解决问题、创作内容、学习知识</p>
+                    <div class="category-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                </div>
+                <div class="category-intro" id="ai-chat-intro">
+                    <p>AI聊天助手是通过自然语言处理技术实现的智能对话系统，可以理解您的问题并提供相关回答。这类工具不仅可以用于日常对话，还能帮助您撰写文案、生成创意内容、解决编程问题或作为研究助手。通过精心设计的提示词（Prompts），您可以让AI助手在具体领域发挥专业水平的能力，极大提高工作效率。</p>
+                    <p>商业应用场景包括：客户服务自动化、内容创作辅助、个性化教育、市场调研分析、多语言沟通等。选择合适的AI聊天助手，可以在不增加人力成本的情况下，大幅提升您的生产力和服务质量。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('ai-chat-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>ChatGPT <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <a href="https://chat.openai.com/" target="_blank" class="resource-card-link" aria-label="ChatGPT"></a>
+                        <p id="chatgpt-desc">OpenAI开发的AI聊天机器人，可用于写作、回答问题、代码编写等</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free-version">免费版</span>
+                                <span class="tag" id="tag-paid-version">付费版</span>
+                            </div>
+                            <a href="https://chat.openai.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Claude <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <a href="https://claude.ai/" target="_blank" class="resource-card-link" aria-label="Claude"></a>
+                        <p id="claude-desc">Anthropic开发的AI助手，擅长长文本处理和自然对话，有更好的理解能力</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free-version">免费版</span>
+                                <span class="tag" id="tag-paid-version">付费版</span>
+                            </div>
+                            <a href="https://claude.ai/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>文心一言</h3>
+                        <a href="https://yiyan.baidu.com/" target="_blank" class="resource-card-link" aria-label="文心一言"></a>
+                        <p id="wenxin-desc">百度开发的中文AI助手，对中文理解能力强，支持图像理解</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-china-available">国内可用</span>
+                                <span class="tag" id="tag-free">免费</span>
+                            </div>
+                            <a href="https://yiyan.baidu.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>通义千问</h3>
+                        <p id="tongyi-desc">阿里云开发的AI助手，资源整合能力强，适合知识获取</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-china-available">国内可用</span>
+                                <span class="tag" id="tag-free">免费</span>
+                            </div>
+                            <a href="https://tongyi.aliyun.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI绘画 -->
+            <div class="category-card">
+                <div class="category-header gradient-2">
+                    <h2><i class="fas fa-paint-brush"></i> <span id="ai-art-title">AI绘画</span></h2>
+                    <p id="ai-art-desc">AI图像生成工具，轻松创作高质量图片，无需绘画基础</p>
+                    <div class="category-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="ai-art-intro">
+                    <p>AI绘画工具是近年来发展迅速的创意技术，它通过深度学习算法，将文字描述转化为精美图像。这些工具使原本需要专业技能的绘画创作变得人人可及，无论您是否有艺术基础，只需输入文字描述（提示词），即可生成符合要求的图像。</p>
+                    <p>商业价值体现在：产品展示、品牌设计、社交媒体营销素材制作、电商平台商品图片、广告创意等多个领域。通过AI绘画工具，您可以大幅降低设计成本，提高内容产出效率，增强品牌视觉传达效果。不同的AI绘画工具有各自的特点和适用场景，选择合适的工具可以让您的创意设计更加出彩。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('ai-art-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>Midjourney <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <a href="https://www.midjourney.com/" target="_blank" class="resource-card-link" aria-label="Midjourney"></a>
+                        <p id="midjourney-desc">AI图像生成工具，可根据文本描述创建高质量、艺术感强的图像</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-paid">付费</span>
+                                <span class="tag" id="tag-discord">Discord</span>
+                            </div>
+                            <a href="https://www.midjourney.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Stable Diffusion</h3>
+                        <a href="https://stablediffusionweb.com/" target="_blank" class="resource-card-link" aria-label="Stable Diffusion"></a>
+                        <p id="stablediffusion-desc">开源AI图像生成模型，可本地部署，高度自定义</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-open-source">开源</span>
+                                <span class="tag" id="tag-self-hosted">自部署</span>
+                            </div>
+                            <a href="https://stablediffusionweb.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>海艺</h3>
+                        <a href="https://www.seaart.ai/" target="_blank" class="resource-card-link" aria-label="海艺"></a>
+                        <p id="seaart-desc">中文AI绘画平台，对中文提示词理解良好，上手简单</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-china-available">国内可用</span>
+                                <span class="tag" id="tag-free-trial">免费试用</span>
+                            </div>
+                            <a href="https://www.seaart.ai/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>通义万相</h3>
+                        <p id="wanxiang-desc">阿里云开发的AI绘画工具，提供多种风格和模板</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-china-available">国内可用</span>
+                                <span class="tag" id="tag-free-quota">免费额度</span>
+                            </div>
+                            <a href="https://tongyi.aliyun.com/wanxiang/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI视频 -->
+            <div class="category-card">
+                <div class="category-header gradient-3">
+                    <h2><i class="fas fa-video"></i> <span id="ai-video-title">AI视频</span></h2>
+                    <p id="ai-video-desc">AI视频生成和编辑工具，快速制作专业视频内容</p>
+                    <div class="category-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="ai-video-intro">
+                    <p>AI视频工具是革命性的内容创作解决方案，能够将文字脚本、图片或简单指令转换为完整的视频作品。这类工具融合了计算机视觉、自然语言处理和深度学习技术，大大降低了视频制作的技术门槛和时间成本。</p>
+                    <p>商业应用广泛：营销宣传片制作、产品演示、教育培训内容、社交媒体短视频、数字人客服等。借助AI视频工具，即使是小型企业和个人创作者，也能以较低成本生产专业水准的视频内容，提高品牌曝光率和用户参与度。随着技术不断发展，AI视频创作的质量和多样性将持续提升，为内容营销带来更多可能性。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('ai-video-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>海螺AI视频 <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <p id="hailuo-desc">国内AI视频创作平台，输入文本生成视频，支持多种风格</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-china-available">国内可用</span>
+                                <span class="tag" id="tag-free-trial">免费试用</span>
+                            </div>
+                            <a href="https://hailuoai.com/video" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>银河录像局</h3>
+                        <p id="yinhe-desc">次世代AI视频合租平台，降低使用成本</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-group-buy">合租</span>
+                                <span class="tag" id="tag-cost-effective">性价比高</span>
+                            </div>
+                            <a href="https://nf.video/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Talking Avatar</h3>
+                        <p id="talkingavatar-desc">AI数字人生成平台，可创建说话的数字虚拟形象</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-avatar">数字人</span>
+                                <span class="tag" id="tag-english-platform">英文平台</span>
+                            </div>
+                            <a href="https://www.talkingavatar.ai/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商业灵感与创业指南 -->
+        <div class="section-title">
+            <i class="fas fa-lightbulb"></i>
+            <span id="business-ideas-title">商业灵感与创业指南</span>
+            <meta itemprop="name" content="商业灵感与创业指南">
+            <meta itemprop="description" content="为创业者提供的市场趋势分析、商业机会发现和创业社区资源，助您找到有潜力的创业方向和验证商业想法">
+        </div>
+        <div class="category-container">
+            <!-- 创业社区 -->
+            <div class="category-card">
+                <div class="category-header gradient-4">
+                    <h2><i class="fas fa-users"></i> <span id="startup-communities-title">创业社区</span></h2>
+                    <p id="startup-communities-desc">寻找灵感、获取经验、结识同行的创业社区</p>
+                    <div class="category-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="startup-communities-intro">
+                    <p>创业社区是连接创业者与投资人、导师和同行的重要平台，提供宝贵的经验分享、资源交流和人脉建设机会。加入合适的创业社区，可以让您避免常见创业陷阱，学习成功案例，获取第一手市场反馈和行业动态。</p>
+                    <p>这些社区的价值在于：降低创业信息不对称，提供情感支持和解决方案，帮助寻找合作伙伴和早期用户，甚至可能接触到潜在投资人。无论您是全职创业者还是副业探索者，积极参与创业社区都能加速您的成长和项目进展，提高创业成功概率。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('startup-communities-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>Indie Hackers <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <p id="indiehackers-desc">独立开发者社区，分享创业经验、收入和成功案例</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-english">英文</span>
+                                <span class="tag" id="tag-free">免费</span>
+                            </div>
+                            <a href="https://www.indiehackers.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Product Hunt</h3>
+                        <p id="producthunt-desc">发现新产品和创意的平台，也是推广自己产品的好渠道</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-english">英文</span>
+                                <span class="tag" id="tag-product-promotion">产品推广</span>
+                            </div>
+                            <a href="https://www.producthunt.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>人人都是产品经理</h3>
+                        <p id="woshipm-desc">国内产品经理和创业者社区，分享产品和商业见解</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-china">国内</span>
+                                <span class="tag" id="tag-product-thinking">产品思维</span>
+                            </div>
+                            <a href="https://www.woshipm.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 趋势研究 -->
+            <div class="category-card">
+                <div class="category-header gradient-5">
+                    <h2><i class="fas fa-chart-line"></i> <span id="trend-research-title">趋势研究</span></h2>
+                    <p id="trend-research-desc">了解市场趋势和商业机会的工具和资源</p>
+                    <div class="category-icon">
+                        <i class="fas fa-binoculars"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="trend-research-intro">
+                    <p>趋势研究工具可以帮助您洞察市场变化和消费者需求的演变，是制定商业策略的重要依据。通过这些工具，您可以了解热门话题、行业发展方向、竞争格局和潜在商机，做出更明智的商业决策。</p>
+                    <p>通过系统性的趋势分析，创业者可以发现蓝海市场、预测消费者行为变化、识别新兴商业模式。在快速变化的互联网经济中，趋势研究能力是商业成功的关键因素之一，帮助您在竞争中占据先机，优化产品和服务定位，避免盲目跟风或错过重要机遇。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('trend-research-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>Trends.vc <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <p id="trendsvc-desc">深度研究商业趋势和机会的报告平台，提供详细市场分析</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-english">英文</span>
+                                <span class="tag" id="tag-partially-free">部分免费</span>
+                            </div>
+                            <a href="https://trends.vc/archive/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>艾瑞APP指数</h3>
+                        <p id="iresearch-desc">国内APP市场数据分析平台，了解热门应用和市场趋势</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-china">国内</span>
+                                <span class="tag" id="tag-market-data">市场数据</span>
+                            </div>
+                            <a href="https://index.iresearch.com.cn/new/#/app/list" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>谷歌下拉词</h3>
+                        <p id="searchsuggest-desc">基于谷歌搜索热门关键词分析工具，发现用户需求</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-keywords">关键词</span>
+                                <span class="tag" id="tag-market-needs">市场需求</span>
+                            </div>
+                            <a href="https://www.searchsuggest.tips/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 需求挖掘 -->
+            <div class="category-card">
+                <div class="category-header gradient-6">
+                    <h2><i class="fas fa-search"></i> <span id="demand-research-title">需求挖掘</span></h2>
+                    <p id="demand-research-desc">寻找用户痛点和市场空白的工具和方法</p>
+                    <div class="category-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="demand-research-intro">
+                    <p>需求挖掘是找到真实市场需求和用户痛点的系统方法，也是成功创业的基础之一。通过这些工具，您可以深入了解用户的实际问题、期望和行为模式，发现尚未被满足的需求点，从而构建更具市场价值的产品和服务。</p>
+                    <p>精准的需求挖掘可以带来多重收益：降低产品开发风险、提高市场接受度、优化营销策略、增强用户粘性和转化率。与盲目创业相比，基于真实需求的创业项目往往能够更快实现产品市场契合度(Product-Market Fit)，获得更可持续的发展动力。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('demand-research-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>TheresAnAIForThat</h3>
+                        <p id="theresanai-desc">AI工具需求列表，发现用户对AI工具的实际需求和痛点</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-english">英文</span>
+                                <span class="tag" id="tag-ai-startup">AI创业</span>
+                            </div>
+                            <a href="https://theresanaiforthat.com/requests" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Reddit</h3>
+                        <p id="reddit-desc">国外最大社区平台，通过子版块发现各领域用户需求和意见</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-english">英文</span>
+                                <span class="tag" id="tag-community-discussion">社区讨论</span>
+                            </div>
+                            <a href="https://www.reddit.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 网站建设与运营 -->
+        <div class="section-title">
+            <i class="fas fa-globe"></i>
+            <span id="website-building-title">网站建设与运营</span>
+            <meta itemprop="name" content="网站建设与运营">
+            <meta itemprop="description" content="全面的网站构建工具和资源指南，包括域名注册、网站托管、分析工具等，帮助您轻松打造专业网站并有效运营">
+        </div>
+        <div class="category-container">
+            <!-- 域名相关 -->
+            <div class="category-card">
+                <div class="category-header gradient-1">
+                    <h2><i class="fas fa-link"></i> <span id="domain-related-title">域名相关</span></h2>
+                    <p id="domain-related-desc">域名查询、注册和管理的必备工具</p>
+                    <div class="category-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="domain-related-intro">
+                    <p>域名是您网站的门面，也是在线品牌的核心组成部分。选择合适的域名对建立专业形象、增强记忆度和提升用户信任感至关重要。好的域名简短、易记、与业务相关，能够增强品牌价值和网站可发现性。</p>
+                    <p>除了传统的.com、.net等常见后缀，现在还有众多适合特定行业和用途的新顶级域名可供选择。在注册域名时，应考虑可扩展性、商标问题、关键词优化等因素。此外，域名隐私保护和自动续费等管理功能，也能帮助您更好地维护这一重要的数字资产。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('domain-related-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>Lean Domain Search <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <p id="leandomain-desc">输入关键词查找可用域名，提供多种组合建议</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free">免费</span>
+                                <span class="tag" id="tag-domain-search">域名查询</span>
+                            </div>
+                            <a href="https://leandomainsearch.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Namecheap</h3>
+                        <p id="namecheap-desc">知名域名注册商，价格合理，提供免费隐私保护</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-domain-registration">域名注册</span>
+                                <span class="tag" id="tag-english">英文</span>
+                            </div>
+                            <a href="https://www.namecheap.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Porkbun</h3>
+                        <p id="porkbun-desc">性价比高的域名注册服务，特殊后缀价格优惠</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-domain-registration">域名注册</span>
+                                <span class="tag" id="tag-cost-effective">性价比高</span>
+                            </div>
+                            <a href="https://porkbun.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 网站托管 -->
+            <div class="category-card">
+                <div class="category-header gradient-2">
+                    <h2><i class="fas fa-server"></i> <span id="web-hosting-title">网站托管</span></h2>
+                    <p id="web-hosting-desc">快速部署和管理网站的云服务平台</p>
+                    <div class="category-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="web-hosting-intro">
+                    <p>网站托管服务提供存储、计算资源和网络连接，让您的网站在互联网上可被访问。选择合适的托管方案对网站的性能、可靠性和安全性有直接影响。现代网站托管平台通常提供自动化部署、版本控制、CDN集成和SSL证书等功能，极大简化了网站管理和维护过程。</p>
+                    <p>对于初创项目，可以考虑静态网站托管服务，它们通常提供免费或低成本方案，适合展示型网站和简单应用。随着业务发展，您可以逐步升级到更强大的云托管服务，根据实际流量弹性扩展资源。选择适合自己技术栈和预算的托管方案，能够有效平衡性能需求和成本控制。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('web-hosting-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>Vercel <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <p id="vercel-desc">前端项目部署平台，支持React、Vue等框架，自动CI/CD</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free-version">免费版</span>
+                                <span class="tag" id="tag-frontend-deployment">前端部署</span>
+                            </div>
+                            <a href="https://vercel.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Cloudflare</h3>
+                        <p id="cloudflare-desc">提供CDN、DNS管理和网站安全服务的平台</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free-version">免费版</span>
+                                <span class="tag" id="tag-cdn">CDN</span>
+                            </div>
+                            <a href="https://www.cloudflare-cn.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 网站分析 -->
+            <div class="category-card">
+                <div class="category-header gradient-3">
+                    <h2><i class="fas fa-chart-bar"></i> <span id="web-analytics-title">网站分析</span></h2>
+                    <p id="web-analytics-desc">跟踪网站流量和用户行为的工具</p>
+                    <div class="category-icon">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="web-analytics-intro">
+                    <p>网站分析工具帮助您深入了解用户如何与您的网站互动，提供关于访问量、流量来源、用户行为和转化率等关键指标的数据。这些洞察对于优化网站性能、改善用户体验和提高商业效果至关重要。</p>
+                    <p>通过分析数据，您可以识别网站的强项和弱点，了解哪些内容最受欢迎，哪些页面有高跳出率，以及用户在转化漏斗中的流失点。基于这些信息，您可以做出有针对性的改进，如优化页面加载速度、调整内容策略、增强用户引导，从而提高网站效率和投资回报率。对于电商网站和营销型网页，数据驱动的优化往往能显著提升转化率和收入。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('web-analytics-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>Google Analytics <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <p id="ga-desc">最常用的网站流量分析工具，提供详细的用户行为数据</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free">免费</span>
+                                <span class="tag" id="tag-traffic-analysis">流量分析</span>
+                            </div>
+                            <a href="https://analytics.google.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Bing Webmaster Tools</h3>
+                        <p id="bing-webmaster-desc">必应搜索引擎的网站管理工具，SEO优化必备</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free">免费</span>
+                                <span class="tag" id="tag-seo">SEO</span>
+                            </div>
+                            <a href="https://www.bing.com/webmasters/about" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学习资源与社区 -->
+        <div class="section-title">
+            <i class="fas fa-graduation-cap"></i>
+            <span id="learning-resources-title">学习资源与社区</span>
+            <meta itemprop="name" content="学习资源与社区">
+            <meta itemprop="description" content="精选的AI技术学习资源和社区指南，帮助您掌握AI提示词编写技巧和最新技术知识，提高创业和项目开发效率">
+        </div>
+        <div class="category-container">
+            <!-- AI提示词学习 -->
+            <div class="category-card">
+                <div class="category-header gradient-4">
+                    <h2><i class="fas fa-magic"></i> <span id="prompt-learning-title">AI提示词学习</span></h2>
+                    <p id="prompt-learning-desc">学习如何编写高效的AI提示词，提高AI工具使用效率</p>
+                    <div class="category-icon">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="prompt-learning-intro">
+                    <p>AI提示词(Prompt)是与人工智能系统沟通的关键，掌握提示词编写技巧可以显著提高AI工具的输出质量和实用性。有效的提示词设计需要考虑明确性、结构化和目标导向，通过精确的指令和上下文引导AI生成更符合预期的结果。</p>
+                    <p>在商业应用中，提示词工程(Prompt Engineering)正成为一项重要技能，它可以帮助您优化内容创作、产品设计、市场分析和客户服务等多个环节。学习提示词技巧不需要编程基础，但需要了解AI模型的特性和局限性，以及如何通过迭代优化获得最佳效果。投入时间学习这一技能，将使您能更有效地利用AI工具，提高工作效率和创意表达能力。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('prompt-learning-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>AiShort <i class="fas fa-star" style="color: #FFCC00;"></i></h3>
+                        <p id="aishort-desc">AI提示词大全，提供各种场景的优质提示词模板</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free">免费</span>
+                                <span class="tag" id="tag-prompt">提示词</span>
+                            </div>
+                            <a href="https://www.aishort.top/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>PromLib</h3>
+                        <p id="promlib-desc">AI提示词分享平台，提供高质量的提示词和场景</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free">免费</span>
+                                <span class="tag" id="tag-community-sharing">社区分享</span>
+                            </div>
+                            <a href="https://promlib.com/" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技术学习 -->
+            <div class="category-card">
+                <div class="category-header gradient-5">
+                    <h2><i class="fas fa-code"></i> <span id="tech-learning-title">技术学习</span></h2>
+                    <p id="tech-learning-desc">学习编程和AI相关技术的资源</p>
+                    <div class="category-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+                <div class="category-intro collapsed" id="tech-learning-intro">
+                    <p>技术学习资源帮助您掌握编程、人工智能和数字工具的核心技能，即使您没有技术背景，也可以从这些入门级资源开始学习。在当今数字经济时代，具备基本的技术理解和操作能力，对于创业者和自由职业者至关重要。</p>
+                    <p>通过这些学习平台，您可以按照自己的节奏掌握网站开发、应用程序设计、数据分析或AI工具使用等实用技能。技术知识不仅可以帮助您降低创业和运营成本，还能增强与技术团队的沟通效率，做出更明智的技术决策。随着低代码和AI辅助编程工具的发展，技术学习的门槛正在降低，为更多人提供了掌握数字技能的机会。</p>
+                </div>
+                <button class="intro-toggle" onclick="toggleIntro('tech-learning-intro')"><i class="fas fa-chevron-down"></i> <span id="read-more">阅读详情</span></button>
+                <div class="resources-list">
+                    <div class="resource-card">
+                        <h3>Cursor 101</h3>
+                        <p id="cursor101-desc">AI编程助手Cursor的学习资源，帮助提高编程效率</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-free">免费</span>
+                                <span class="tag" id="tag-ai-coding">AI编程</span>
+                            </div>
+                            <a href="https://cursor101.com/zh" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>GPT指南Slack社区</h3>
+                        <p id="gpt-guide-desc">专注于AI应用和技术交流的中文社区，有大量实用教程</p>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                <span class="tag" id="tag-community">社区</span>
+                                <span class="tag" id="tag-chinese">中文</span>
+                            </div>
+                            <a href="https://app.slack.com/client/T053EMGBEEN/C05BVLPE885" class="resource-link" target="_blank"><span id="visit-website">访问网站</span> <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 id="about-us-title">关于我们</h3>
+                <p id="about-us-desc">我们致力于帮助互联网新手快速找到适合的赚钱工具和资源，让创业之路更加顺畅。</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 id="quick-links-title">快速链接</h3>
+                <a href="#" id="home-link">首页</a>
+                <a href="#" id="categories-link">全部分类</a>
+                <a href="#" id="tools-link">热门工具</a>
+                <a href="#" id="blog-link">博客文章</a>
+            </div>
+            <div class="footer-column">
+                <h3 id="contact-us-title">联系我们</h3>
+                <p><i class="fas fa-envelope"></i> 307714007@qq.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span id="address">中国，北京</span></p>
+                <p id="disclaimer">本站仅提供工具和资源导航，不代表对任何服务的背书。</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 <span id="copyright-name">新手小白赚钱导航</span>. <span id="rights">保留所有权利</span>.</p>
+        </div>
+    </footer>
+
+    <!-- 浮动按钮 -->
+    <div class="floating-btn" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // 语言切换功能
+        const languageSelector = document.getElementById('language-selector');
+        const texts = {
+            'zh': {
+                'site-title': '新手小白赚钱导航',
+                'welcome-text': '从零开始的财富之旅',
+                'ai-tools-title': 'AI工具与变现',
+                'ai-chat-title': 'AI聊天助手',
+                'ai-chat-desc': '强大的AI对话工具，帮你解决问题、创作内容、学习知识',
+                'chatgpt-desc': 'OpenAI开发的AI聊天机器人，可用于写作、回答问题、代码编写等',
+                'claude-desc': 'Anthropic开发的AI助手，擅长长文本处理和自然对话，有更好的理解能力',
+                'wenxin-desc': '百度开发的中文AI助手，对中文理解能力强，支持图像理解',
+                'tongyi-desc': '阿里云开发的AI助手，资源整合能力强，适合知识获取',
+                'ai-art-title': 'AI绘画',
+                'ai-art-desc': 'AI图像生成工具，轻松创作高质量图片，无需绘画基础',
+                'midjourney-desc': 'AI图像生成工具，可根据文本描述创建高质量、艺术感强的图像',
+                'stablediffusion-desc': '开源AI图像生成模型，可本地部署，高度自定义',
+                'seaart-desc': '中文AI绘画平台，对中文提示词理解良好，上手简单',
+                'wanxiang-desc': '阿里云开发的AI绘画工具，提供多种风格和模板',
+                'ai-video-title': 'AI视频',
+                'ai-video-desc': 'AI视频生成和编辑工具，快速制作专业视频内容',
+                'hailuo-desc': '国内AI视频创作平台，输入文本生成视频，支持多种风格',
+                'yinhe-desc': '次世代AI视频合租平台，降低使用成本',
+                'talkingavatar-desc': 'AI数字人生成平台，可创建说话的数字虚拟形象',
+                
+                // 标签翻译
+                'tag-free-version': '免费版',
+                'tag-paid-version': '付费版',
+                'tag-open-source': '开源',
+                'tag-self-hosted': '自部署',
+                'tag-china-available': '国内可用',
+                'tag-free': '免费',
+                'tag-free-quota': '免费额度',
+                'tag-free-trial': '免费试用',
+                'tag-paid': '付费',
+                'tag-discord': 'Discord',
+                'tag-cn-text': '中文文本',
+                'tag-group-buy': '合租',
+                'tag-cost-effective': '性价比高',
+                'tag-avatar': '数字头像',
+                'tag-english-platform': '英文平台',
+                'tag-english': '英文',
+                'tag-product-promotion': '产品推广',
+                'tag-china': '中国',
+                'tag-product-thinking': '产品思维',
+                'tag-partially-free': '部分免费',
+                'tag-market-data': '市场数据',
+                'tag-keywords': '关键词',
+                'tag-market-needs': '市场需求',
+                'tag-ai-startup': 'AI创业',
+                'tag-community': '社区',
+                'tag-community-discussion': '社区讨论',
+                'tag-domain-search': '域名查询',
+                'tag-domain-registration': '域名注册',
+                'tag-frontend-deployment': '前端部署',
+                'tag-cdn': 'CDN',
+                'tag-traffic-analysis': '流量分析',
+                'tag-seo': 'SEO',
+                'tag-prompt': '提示词',
+                'tag-community-sharing': '社区分享',
+                'tag-ai-coding': 'AI编程',
+                'tag-chinese': '中文',
+                
+                'business-ideas-title': '商业灵感与创业指南',
+                'startup-communities-title': '创业社区',
+                'startup-communities-desc': '寻找灵感、获取经验、结识同行的创业社区',
+                'indiehackers-desc': '独立开发者社区，分享创业经验、收入和成功案例',
+                'producthunt-desc': '发现新产品和创意的平台，也是推广自己产品的好渠道',
+                'woshipm-desc': '国内产品经理和创业者社区，分享产品和商业见解',
+                'trend-research-title': '趋势研究',
+                'trend-research-desc': '了解市场趋势和商业机会的工具和资源',
+                'trendsvc-desc': '深度研究商业趋势和机会的报告平台，提供详细市场分析',
+                'iresearch-desc': '国内APP市场数据分析平台，了解热门应用和市场趋势',
+                'searchsuggest-desc': '基于谷歌搜索热门关键词分析工具，发现用户需求',
+                'demand-research-title': '需求挖掘',
+                'demand-research-desc': '寻找用户痛点和市场空白的工具和方法',
+                'theresanai-desc': 'AI工具需求列表，发现用户对AI工具的实际需求和痛点',
+                'reddit-desc': '国外最大社区平台，通过子版块发现各领域用户需求和意见',
+                'website-building-title': '网站建设与运营',
+                'domain-related-title': '域名相关',
+                'domain-related-desc': '域名查询、注册和管理的必备工具',
+                'leandomain-desc': '输入关键词查找可用域名，提供多种组合建议',
+                'namecheap-desc': '知名域名注册商，价格合理，提供免费隐私保护',
+                'porkbun-desc': '性价比高的域名注册服务，特殊后缀价格优惠',
+                'web-hosting-title': '网站托管',
+                'web-hosting-desc': '快速部署和管理网站的云服务平台',
+                'vercel-desc': '前端项目部署平台，支持React、Vue等框架，自动CI/CD',
+                'cloudflare-desc': '提供CDN、DNS管理和网站安全服务的平台',
+                'web-analytics-title': '网站分析',
+                'web-analytics-desc': '跟踪网站流量和用户行为的工具',
+                'ga-desc': '最常用的网站流量分析工具，提供详细的用户行为数据',
+                'bing-webmaster-desc': '必应搜索引擎的网站管理工具，SEO优化必备',
+                'learning-resources-title': '学习资源与社区',
+                'prompt-learning-title': 'AI提示词学习',
+                'prompt-learning-desc': '学习如何编写高效的AI提示词，提高AI工具使用效率',
+                'aishort-desc': 'AI提示词大全，提供各种场景的优质提示词模板',
+                'promlib-desc': 'AI提示词分享平台，提供高质量的提示词和场景',
+                'tech-learning-title': '技术学习',
+                'tech-learning-desc': '学习编程和AI相关技术的资源',
+                'cursor101-desc': 'AI编程助手Cursor的学习资源，帮助提高编程效率',
+                'gpt-guide-desc': '专注于AI应用和技术交流的中文社区，有大量实用教程',
+                'about-us-title': '关于我们',
+                'about-us-desc': '我们致力于帮助互联网新手快速找到适合的赚钱工具和资源，让创业之路更加顺畅。',
+                'quick-links-title': '快速链接',
+                'home-link': '首页',
+                'categories-link': '全部分类',
+                'tools-link': '热门工具',
+                'blog-link': '博客文章',
+                'contact-us-title': '联系我们',
+                'address': '中国，北京',
+                'disclaimer': '本站仅提供工具和资源导航，不代表对任何服务的背书。',
+                'copyright-name': '新手小白赚钱导航',
+                'rights': '保留所有权利',
+                'read-more': '阅读详情',
+                'read-less': '收起详情'
+            },
+            'en': {
+                'site-title': 'Beginner\'s Money-Making Navigation',
+                'welcome-text': 'Start Your Wealth Journey',
+                'ai-tools-title': 'AI Tools & Monetization',
+                'ai-chat-title': 'AI Chat Assistants',
+                'ai-chat-desc': 'Powerful AI conversation tools to solve problems, create content, and learn',
+                'chatgpt-desc': 'AI chatbot developed by OpenAI for writing, answering questions, coding, etc.',
+                'claude-desc': 'AI assistant by Anthropic, excels at long-text processing and natural conversations',
+                'wenxin-desc': 'Chinese AI assistant by Baidu with strong Chinese language understanding',
+                'tongyi-desc': 'AI assistant by Alibaba Cloud with strong knowledge integration capabilities',
+                'ai-art-title': 'AI Art Generation',
+                'ai-art-desc': 'AI image generation tools to create high-quality images without artistic skills',
+                'midjourney-desc': 'AI image generator that creates high-quality, artistic images from text descriptions',
+                'stablediffusion-desc': 'Open-source AI image model that can be deployed locally with high customization',
+                'seaart-desc': 'Chinese AI art platform with good understanding of Chinese prompts',
+                'wanxiang-desc': 'AI art tool by Alibaba Cloud offering various styles and templates',
+                'ai-video-title': 'AI Video',
+                'ai-video-desc': 'AI video generation and editing tools for quick professional content creation',
+                'hailuo-desc': 'Chinese AI video creation platform that generates videos from text inputs',
+                'yinhe-desc': 'Next-gen AI video group-buying platform to reduce costs',
+                'talkingavatar-desc': 'AI digital avatar platform for creating talking virtual characters',
+                
+                // 标签翻译
+                'tag-free-version': 'Free Version',
+                'tag-paid-version': 'Paid Version',
+                'tag-open-source': 'Open Source',
+                'tag-self-hosted': 'Self-Hosted',
+                'tag-china-available': 'China Available',
+                'tag-free': 'Free',
+                'tag-free-quota': 'Free Quota',
+                'tag-free-trial': 'Free Trial',
+                'tag-paid': 'Paid',
+                'tag-discord': 'Discord',
+                'tag-cn-text': 'Chinese Text',
+                'tag-group-buy': 'Group Buy',
+                'tag-cost-effective': 'Cost-Effective',
+                'tag-avatar': 'Digital Avatar',
+                'tag-english-platform': 'English Platform',
+                'tag-english': 'English',
+                'tag-product-promotion': 'Product Promotion',
+                'tag-china': 'China',
+                'tag-product-thinking': 'Product Thinking',
+                'tag-partially-free': 'Partially Free',
+                'tag-market-data': 'Market Data',
+                'tag-keywords': 'Keywords',
+                'tag-market-needs': 'Market Needs',
+                'tag-ai-startup': 'AI Startup',
+                'tag-community': 'Community',
+                'tag-community-discussion': 'Community Discussion',
+                'tag-domain-search': 'Domain Search',
+                'tag-domain-registration': 'Domain Registration',
+                'tag-frontend-deployment': 'Frontend Deployment',
+                'tag-cdn': 'CDN',
+                'tag-traffic-analysis': 'Traffic Analysis',
+                'tag-seo': 'SEO',
+                'tag-prompt': 'Prompt',
+                'tag-community-sharing': 'Community Sharing',
+                'tag-ai-coding': 'AI Coding',
+                'tag-chinese': 'Chinese',
+                
+                'business-ideas-title': 'Business Ideas & Startup Guides',
+                'startup-communities-title': 'Startup Communities',
+                'startup-communities-desc': 'Find inspiration, gain experience, and network with peers',
+                'indiehackers-desc': 'Community for independent developers sharing startup experiences and revenues',
+                'producthunt-desc': 'Platform to discover new products and ideas, also great for promoting your own',
+                'woshipm-desc': 'Chinese community for product managers and entrepreneurs sharing insights',
+                'trend-research-title': 'Trend Research',
+                'trend-research-desc': 'Tools and resources to understand market trends and business opportunities',
+                'trendsvc-desc': 'Platform with in-depth reports on business trends and opportunities',
+                'iresearch-desc': 'Chinese app market analysis platform for popular apps and market trends',
+                'searchsuggest-desc': 'Google search suggestion analysis tool to discover user needs',
+                'demand-research-title': 'Demand Research',
+                'demand-research-desc': 'Find user pain points and market gaps',
+                'theresanai-desc': 'AI tool request list to discover actual user needs for AI tools',
+                'reddit-desc': 'Largest international community platform with subreddits for various fields',
+                'website-building-title': 'Website Building & Operation',
+                'domain-related-title': 'Domain Tools',
+                'domain-related-desc': 'Essential tools for domain search, registration, and management',
+                'leandomain-desc': 'Enter keywords to find available domains with various combinations',
+                'namecheap-desc': 'Well-known domain registrar with reasonable prices and free privacy protection',
+                'porkbun-desc': 'Cost-effective domain registration service with special TLD discounts',
+                'web-hosting-title': 'Web Hosting',
+                'web-hosting-desc': 'Cloud platforms for quick website deployment and management',
+                'vercel-desc': 'Frontend deployment platform supporting React, Vue, etc. with auto CI/CD',
+                'cloudflare-desc': 'Platform providing CDN, DNS management, and website security services',
+                'web-analytics-title': 'Web Analytics',
+                'web-analytics-desc': 'Tools to track website traffic and user behavior',
+                'ga-desc': 'Most widely used website traffic analysis tool with detailed user behavior data',
+                'bing-webmaster-desc': 'Bing search engine\'s website management tool for SEO optimization',
+                'learning-resources-title': 'Learning Resources & Communities',
+                'prompt-learning-title': 'AI Prompt Learning',
+                'prompt-learning-desc': 'Learn to write effective AI prompts to improve AI tool efficiency',
+                'aishort-desc': 'Comprehensive collection of AI prompts for various scenarios',
+                'promlib-desc': 'AI prompt sharing platform with high-quality prompts and scenarios',
+                'tech-learning-title': 'Technical Learning',
+                'tech-learning-desc': 'Resources for learning programming and AI-related technologies',
+                'cursor101-desc': 'Learning resources for Cursor AI programming assistant to improve coding efficiency',
+                'gpt-guide-desc': 'Chinese community focused on AI applications with practical tutorials',
+                'about-us-title': 'About Us',
+                'about-us-desc': 'We are dedicated to helping internet beginners quickly find suitable money-making tools and resources.',
+                'quick-links-title': 'Quick Links',
+                'home-link': 'Home',
+                'categories-link': 'All Categories',
+                'tools-link': 'Popular Tools',
+                'blog-link': 'Blog',
+                'contact-us-title': 'Contact Us',
+                'address': 'Beijing, China',
+                'disclaimer': 'This site only provides tools and resource navigation, not endorsements of any service.',
+                'copyright-name': 'Beginner\'s Money-Making Navigation',
+                'rights': 'All Rights Reserved',
+                'visit-website': 'Visit Website',
+                'read-more': 'Read More',
+                'read-less': 'Read Less'
+            }
+        };
+
+        // 全局变量
+        let currentLanguage = 'zh';
+        
+        // 切换语言的函数
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            updateAllTexts();
+            document.documentElement.lang = lang;
+        }
+
+        // 从浏览器检测语言
+        function detectLanguageFromBrowser() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            let detectedLang = 'en';
+            
+            if (browserLang.startsWith('zh')) {
+                detectedLang = 'zh';
+            }
+            
+            console.log(`使用浏览器语言: ${browserLang}, 设置语言为: ${detectedLang}`);
+            languageSelector.value = detectedLang;
+            changeLanguage(detectedLang);
+        }
+        
+        // 综合语言检测函数
+        function detectUserLanguage() {
+            // 首先尝试从localStorage读取之前的语言设置
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) {
+                console.log(`使用已保存的语言偏好: ${savedLang}`);
+                languageSelector.value = savedLang;
+                changeLanguage(savedLang);
+                return;
+            }
+            
+            // 接着尝试IP检测
+            fetch('https://ipapi.co/json/')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('IP API 响应异常');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let detectedLang = 'en';
+                    const chineseCountries = ['CN', 'HK', 'TW', 'SG', 'MO'];
+                    
+                    if (chineseCountries.includes(data.country_code)) {
+                        detectedLang = 'zh';
+                    }
+                    
+                    console.log(`检测到国家/地区: ${data.country_name}, 设置语言为: ${detectedLang}`);
+                    languageSelector.value = detectedLang;
+                    changeLanguage(detectedLang);
+                })
+                .catch(error => {
+                    console.warn('从IP检测语言时出错:', error);
+                    // 最后使用浏览器语言
+                    detectLanguageFromBrowser();
+                });
+        }
+        
+        // 绑定语言选择器事件并保存用户偏好
+        languageSelector.addEventListener('change', function() {
+            const selectedLang = this.value;
+            changeLanguage(selectedLang);
+            localStorage.setItem('preferredLanguage', selectedLang);
+            console.log(`语言偏好已保存: ${selectedLang}`);
+        });
+
+        // 页面加载时调用综合语言检测
+        detectUserLanguage();
+
+        // 回到顶部功能
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 监听滚动，控制回到顶部按钮的显示和隐藏
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.pointerEvents = 'auto';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.pointerEvents = 'none';
+            }
+        });
+
+        // 搜索功能
+        const searchInput = document.getElementById('search-input');
+        const resourceCards = document.querySelectorAll('.resource-card');
+        const searchResultsInfo = document.getElementById('search-results-info');
+        const resultsCount = document.getElementById('results-count');
+        const searchKeyword = document.getElementById('search-keyword');
+        const clearSearch = document.getElementById('clear-search');
+
+        // 清除搜索内容
+        clearSearch.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+            updateSearch();
+            clearSearch.classList.remove('visible');
+            searchResultsInfo.classList.remove('active');
+        });
+
+        // 更新搜索结果的函数
+        function updateSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            let matchCount = 0;
+            
+            if (searchTerm === '') {
+                // 如果搜索框为空，显示所有卡片和分类
+                resourceCards.forEach(card => {
+                    card.style.display = 'block';
+                    
+                    // 移除所有高亮
+                    removeHighlights(card);
+                });
+                document.querySelectorAll('.category-card').forEach(card => {
+                    card.style.display = 'block';
+                });
+                
+                // 隐藏搜索结果信息
+                searchResultsInfo.classList.remove('active');
+                
+                // 移除所有"无结果"消息
+                document.querySelectorAll('.no-results-message').forEach(msg => msg.remove());
+                
+                return;
+            }
+            
+            // 显示清除按钮
+            clearSearch.classList.add('visible');
+            
+            // 隐藏所有卡片，然后只显示匹配的
+            resourceCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                
+                // 移除之前的高亮
+                removeHighlights(card);
+                
+                if (title.includes(searchTerm) || desc.includes(searchTerm) || tags.some(tag => tag.includes(searchTerm))) {
+                    card.style.display = 'block';
+                    // 确保包含匹配卡片的分类也显示
+                    card.closest('.category-card').style.display = 'block';
+                    matchCount++;
+                    
+                    // 高亮匹配文本
+                    if (title.includes(searchTerm)) {
+                        highightText(card.querySelector('h3'), searchTerm);
+                    }
+                    if (desc.includes(searchTerm)) {
+                        highightText(card.querySelector('p'), searchTerm);
+                    }
+                    tags.forEach((tag, index) => {
+                        if (tag.includes(searchTerm)) {
+                            highightText(card.querySelectorAll('.tag')[index], searchTerm);
+                        }
+                    });
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 隐藏没有可见卡片的分类
+            document.querySelectorAll('.category-card').forEach(categoryCard => {
+                const visibleCards = categoryCard.querySelectorAll('.resource-card[style="display: block;"]').length;
+                if (visibleCards === 0) {
+                    categoryCard.style.display = 'none';
+                }
+            });
+            
+            // 更新结果计数和显示信息条
+            resultsCount.textContent = matchCount;
+            searchKeyword.textContent = searchTerm;
+            searchResultsInfo.classList.add('active');
+            
+            // 检查是否有搜索结果
+            const visibleCategories = document.querySelectorAll('.category-card[style="display: block;"]');
+            if (visibleCategories.length === 0) {
+                // 没有结果，显示提示
+                let noResultsMessage = document.querySelector('.no-results-message');
+                if (!noResultsMessage) {
+                    noResultsMessage = document.createElement('div');
+                    noResultsMessage.className = 'no-results-message';
+                    noResultsMessage.innerHTML = `
+                        <p>没有找到与 "<strong>${searchTerm}</strong>" 相关的结果</p>
+                        <p>建议尝试：</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li>• 检查拼写</li>
+                            <li>• 使用更少或不同的关键词</li>
+                            <li>• 尝试更通用的搜索词</li>
+                        </ul>
+                    `;
+                    document.querySelector('.container').appendChild(noResultsMessage);
+                } else {
+                    noResultsMessage.querySelector('strong').textContent = searchTerm;
+                }
+            } else {
+                // 有结果，移除提示
+                const noResultsMessage = document.querySelector('.no-results-message');
+                if (noResultsMessage) {
+                    noResultsMessage.remove();
+                }
+            }
+        }
+
+        // 高亮文本的函数
+        function highightText(element, searchTerm) {
+            const innerHTML = element.innerHTML;
+            const index = element.textContent.toLowerCase().indexOf(searchTerm.toLowerCase());
+            if (index >= 0) {
+                const match = element.textContent.substr(index, searchTerm.length);
+                const newHTML = innerHTML.replace(
+                    match, 
+                    `<span class="search-highlight">${match}</span>`
+                );
+                element.innerHTML = newHTML;
+            }
+        }
+
+        // 移除高亮的函数
+        function removeHighlights(element) {
+            element.querySelectorAll('.search-highlight').forEach(highlight => {
+                const parent = highlight.parentNode;
+                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+                parent.normalize();
+            });
+        }
+
+        // 输入搜索内容时触发
+        searchInput.addEventListener('input', function() {
+            updateSearch();
+        });
+
+        // 按下ESC键清空搜索
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                this.value = '';
+                updateSearch();
+                clearSearch.classList.remove('visible');
+            }
+        });
+
+        // 动态效果：卡片渐入
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.category-card');
+            
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // 获取当前语言的辅助函数
+        function getCurrentLanguage() {
+            return languageSelector.value || 'zh';
+        }
+        
+        // 函数用于展开和收起分类介绍详情
+        function toggleIntro(introId) {
+            const introElement = document.getElementById(introId);
+            // 使用event.currentTarget代替具体元素，确保正确的按钮被访问
+            const buttonElement = event.currentTarget;
+            
+            // 修复contains方法名称错误
+            if (introElement.classList.contains('collapsed')) {
+                introElement.classList.remove('collapsed');
+                buttonElement.innerHTML = '<i class="fas fa-chevron-up"></i> <span id="read-less">' + (getCurrentLanguage() === 'en' ? 'Hide details' : '收起详情') + '</span>';
+            } else {
+                introElement.classList.add('collapsed');
+                buttonElement.innerHTML = '<i class="fas fa-chevron-down"></i> <span id="read-more">' + (getCurrentLanguage() === 'en' ? 'Read more' : '阅读详情') + '</span>';
+            }
+        }
+        
+        // 确保DOM加载完成后初始化介绍区域
+        document.addEventListener('DOMContentLoaded', function() {
+            // 更新已有元素的显示状态
+            const introElements = document.querySelectorAll('.category-intro');
+            introElements.forEach(function(intro) {
+                // 确保初始状态为折叠
+                intro.classList.add('collapsed');
+            });
+            
+            // 确保所有按钮的初始文本正确
+            const toggleButtons = document.querySelectorAll('.intro-toggle');
+            toggleButtons.forEach(function(button) {
+                button.innerHTML = '<i class="fas fa-chevron-down"></i> <span id="read-more">' + (getCurrentLanguage() === 'en' ? 'Read more' : '阅读详情') + '</span>';
+            });
+        });
+        
+        // 语言切换时更新按钮文本
+        function updateButtonsAfterLanguageChange() {
+            const toggleButtons = document.querySelectorAll('.intro-toggle');
+            toggleButtons.forEach(function(button) {
+                const nextIntro = button.previousElementSibling;
+                if (nextIntro && nextIntro.classList.contains('collapsed')) {
+                    button.innerHTML = '<i class="fas fa-chevron-down"></i> <span id="read-more">' + (getCurrentLanguage() === 'en' ? 'Read more' : '阅读详情') + '</span>';
+                } else if (nextIntro) {
+                    button.innerHTML = '<i class="fas fa-chevron-up"></i> <span id="read-less">' + (getCurrentLanguage() === 'en' ? 'Hide details' : '收起详情') + '</span>';
+                }
+            });
+        }
+        
+        // 更新所有文本的函数，用于语言切换
+        function updateAllTexts() {
+            const lang = languageSelector.value || 'zh';
+            Object.keys(texts[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = texts[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            
+            // 更新所有访问网站按钮文本
+            const visitWebsiteSpans = document.querySelectorAll('.resource-link span');
+            visitWebsiteSpans.forEach(span => {
+                span.textContent = texts[lang]['visit-website'] || '访问网站';
+            });
+            
+            // 更新所有标签文本
+            document.querySelectorAll('.tag').forEach(tag => {
+                const tagId = tag.id;
+                if (tagId && texts[lang][tagId]) {
+                    tag.textContent = texts[lang][tagId];
+                }
+            });
+        }
+        
+        // 修改原有的语言切换函数，添加对按钮文本的更新
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            languageSelector.value = lang;
+            updateAllTexts();
+            
+            // 更新按钮文本
+            updateButtonsAfterLanguageChange();
+            
+            // 保存语言选择到本地存储
+            localStorage.setItem('preferred_language', lang);
+            
+            // 隐藏语言切换提示
+            const languageTip = document.getElementById('language-tip');
+            if (languageTip) {
+                languageTip.style.display = 'none';
+            }
+        }
+        
+        // ... existing code ...
+    </script>
+</body>
+</html>
