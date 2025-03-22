@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP检测测试工具 | AI赚钱导航 - aimoneymap.online</title>
+    <meta name="description" content="测试您的IP地址和自动语言检测功能，aimoneymap.online提供的工具可帮助开发者和网站所有者优化用户体验。">
+    <meta name="keywords" content="IP检测,IP测试,语言检测,aimoneymap.online,AI工具">
+    <link rel="canonical" href="https://aimoneymap.online/ip-test.html"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V5XSHP0W4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4V5XSHP0W4');
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .result {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 250px;
+        }
+        .back-link {
+            display: block;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .language-selector {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <select id="language-selector">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+
+    <h1 id="ip-test-title">IP检测测试工具</h1>
+    <div class="container">
+        <p id="ip-test-description">此工具可以帮助您检测您的IP地址和浏览器语言设置，对网站开发和优化用户体验非常有用。</p>
+        <div class="result">
+            <p><strong id="ip-address-label">您的IP地址:</strong> <span id="ip-address">正在检测...</span></p>
+            <p><strong id="browser-language-label">浏览器语言:</strong> <span id="browser-language">正在检测...</span></p>
+            <p><strong id="connection-status-label">网络连接:</strong> <span id="connection-status">正在检测...</span></p>
+        </div>
+        <div style="margin-top: 20px;">
+            <button id="detect-button">重新检测</button>
+        </div>
+    </div>
+    <a href="https://aimoneymap.online" class="back-link" id="back-link">返回 AI赚钱导航</a>
+
+    <script>
+        // 多语言支持
+        const texts = {
+            zh: {
+                'ip-test-title': 'IP检测测试工具',
+                'ip-test-description': '此工具可以帮助您检测您的IP地址和浏览器语言设置，对网站开发和优化用户体验非常有用。',
+                'ip-address-label': '您的IP地址:',
+                'browser-language-label': '浏览器语言:',
+                'connection-status-label': '网络连接:',
+                'detect-button': '重新检测',
+                'back-link': '返回 AI赚钱导航',
+                'loading': '正在检测...',
+                'online': '在线',
+                'offline': '离线',
+                'detect-failed': '检测失败'
+            },
+            en: {
+                'ip-test-title': 'IP Detection Tool',
+                'ip-test-description': 'This tool helps you detect your IP address and browser language settings, which is useful for website development and user experience optimization.',
+                'ip-address-label': 'Your IP Address:',
+                'browser-language-label': 'Browser Language:',
+                'connection-status-label': 'Network Connection:',
+                'detect-button': 'Detect Again',
+                'back-link': 'Back to AI Money Map',
+                'loading': 'Detecting...',
+                'online': 'Online',
+                'offline': 'Offline',
+                'detect-failed': 'Detection Failed'
+            }
+        };
+        
+        // 获取当前语言
+        function getCurrentLanguage() {
+            return document.getElementById('language-selector').value || 'zh';
+        }
+        
+        // 更新所有文本的函数
+        function updateAllTexts() {
+            const lang = getCurrentLanguage();
+            Object.keys(texts[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = texts[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+        
+        // 语言切换处理
+        document.getElementById('language-selector').addEventListener('change', function() {
+            updateAllTexts();
+            detectIP(); // 重新检测，使用新的语言显示状态
+        });
+        
+        // 检测IP地址函数
+        function detectIP() {
+            const lang = getCurrentLanguage();
+            document.getElementById('ip-address').textContent = texts[lang]['loading'];
+            document.getElementById('browser-language').textContent = texts[lang]['loading'];
+            document.getElementById('connection-status').textContent = texts[lang]['loading'];
+            
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address').textContent = data.ip;
+                    document.getElementById('ip-address').className = 'success';
+                })
+                .catch(error => {
+                    document.getElementById('ip-address').textContent = texts[lang]['detect-failed'];
+                    document.getElementById('ip-address').className = 'error';
+                });
+                
+            // 检测浏览器语言
+            const language = navigator.language || navigator.userLanguage;
+            document.getElementById('browser-language').textContent = language;
+            document.getElementById('browser-language').className = 'success';
+            
+            // 检测网络连接状态
+            if (navigator.onLine) {
+                document.getElementById('connection-status').textContent = texts[lang]['online'];
+                document.getElementById('connection-status').className = 'success';
+            } else {
+                document.getElementById('connection-status').textContent = texts[lang]['offline'];
+                document.getElementById('connection-status').className = 'error';
+            }
+        }
+        
+        // 检查是否有保存的语言选择
+        function loadSavedLanguage() {
+            const savedLang = localStorage.getItem('preferred_language');
+            if (savedLang) {
+                document.getElementById('language-selector').value = savedLang;
+                updateAllTexts();
+            }
+        }
+        
+        // 保存语言选择
+        document.getElementById('language-selector').addEventListener('change', function() {
+            localStorage.setItem('preferred_language', this.value);
+        });
+        
+        // 页面加载时执行
+        window.onload = function() {
+            loadSavedLanguage();
+            detectIP();
+        };
+        
+        // 点击按钮重新检测
+        document.getElementById('detect-button').addEventListener('click', detectIP);
+    </script>
+</body>
+</html> 
